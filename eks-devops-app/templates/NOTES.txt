@@ -1,0 +1,12 @@
+Job deployed successfully!
+
+To view the job status:
+  kubectl get jobs -n {{ .Release.Namespace }}
+
+To view the pod:
+  kubectl get pods -n {{ .Release.Namespace }} -l app.kubernetes.io/name={{ include "devops-app.name" . }},app.kubernetes.io/instance={{ .Release.Name }}
+
+To view the logs:
+  kubectl logs -n {{ .Release.Namespace }} -l app.kubernetes.io/name={{ include "devops-app.name" . }},app.kubernetes.io/instance={{ .Release.Name }}
+
+The job reads a CSV from S3 and completes. No service is exposed.

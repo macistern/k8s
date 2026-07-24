@@ -1,0 +1,7 @@
+1. Forward the service port to your local machine:
+  export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "devops-web.name" . }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME 8080:5000
+
+2. Open your browser and visit http://localhost:8080
+
+3. You should see the message: "¡Hola Natalia hermosa aprendiste kubernetes!"

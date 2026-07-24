@@ -1,0 +1,121 @@
+:root {
+  --surface: #fcf9f8;
+  --surface-container-low: #f6f3f2;
+  --surface-container: #f0eded;
+  --on-surface: #1b1c1c;
+  --on-surface-variant: #434656;
+  --outline: #747688;
+  --outline-variant: #c4c5d9;
+  --primary: #0040e0;
+  --on-primary: #ffffff;
+  --code-bg: #ebebeb;
+  --code-border: #d1d1d1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--on-surface);
+  font-family: 'Public Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1, h2, .headline-xl, .headline-md {
+  font-family: 'JetBrains Mono', monospace;
+  margin: 0;
+}
+
+.headline-xl {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.headline-md {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  border-top: 1px solid var(--outline-variant);
+  padding-top: 24px;
+  margin-bottom: 12px;
+}
+
+.body-lg {
+  font-size: 18px;
+  margin-top: 12px;
+  color: var(--on-surface-variant);
+}
+
+.body-md {
+  font-size: 16px;
+}
+
+.page-header {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px 48px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.panel {
+  background: var(--surface-container-low);
+  border: 1px solid var(--outline-variant);
+  border-radius: 0;
+  padding: 24px;
+}
+
+.service-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.service-list li {
+  border-left: 4px solid var(--primary);
+  background: var(--surface-container);
+  padding: 12px;
+}
+
+.service-list .service-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+pre.runbook-command {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 0;
+  padding: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  overflow-x: auto;
+  margin: 0 0 12px;
+}
+
+.runbook-command-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  display: block;
+  margin-bottom: 4px;
+}

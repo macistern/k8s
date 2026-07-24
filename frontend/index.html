@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevOps E2E Tutorial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Public+Sans:wght@400&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="page-header">
+    <h1 class="headline-xl">DevOps E2E Tutorial</h1>
+    <p class="body-lg">De un script en Python a un frontend servido por CloudFront.</p>
+  </header>
+
+  <main class="container">
+    <section class="panel" id="api-panel">
+      <h2 class="headline-md">Mensaje de la API</h2>
+      <p class="body-md" id="api-message">Consultando /api/ ...</p>
+    </section>
+
+    <section class="panel" id="services-panel">
+      <h2 class="headline-md">Servicios usados en este proyecto</h2>
+      <ul class="service-list" id="service-list"></ul>
+    </section>
+
+    <section class="panel" id="runbook-panel">
+      <h2 class="headline-md">Comandos clave del runbook</h2>
+      <div id="runbook-commands"></div>
+    </section>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
