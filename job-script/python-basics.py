@@ -1,54 +1,55 @@
-import boto3
+import argparse
 import csv
-from io import StringIO
+from pathlib import Path
 
-def descargar_csv(bucket, key):
-    s3_client = boto3.client('s3')
-    try:
-        response = s3_client.get_object(Bucket=bucket, Key=key)
-        return response['Body'].read().decode('utf-8')
-    except Exception as e:
-        print(f"Error downloading CSV: {e}")
-        raise
 
-def extraer_columnas(csv_data):
-    try:
-        reader = csv.DictReader(StringIO(csv_data))
+def cargar_csv(csv_path):
+    with csv_path.open(newline="", encoding="utf-8") as csv_file:
+        reader = csv.DictReader(csv_file)
+        columnas_requeridas = {"run_number", "run_id", "total_attempts"}
+        columnas_faltantes = columnas_requeridas - set(reader.fieldnames or [])
+        if columnas_faltantes:
+            raise ValueError(
+                f"Faltan columnas requeridas en {csv_path}: "
+                f"{', '.join(sorted(columnas_faltantes))}"
+            )
         return list(reader)
-    except Exception as e:
-        print(f"Error parsing CSV: {e}")
-        raise
+
 
 def buscar_datos(datos, columna, valor):
-    try:
-        return [fila for fila in datos if fila.get(columna) == valor]
-    except Exception as e:
-        print(f"Error searching data: {e}")
-        raise
+    return [fila for fila in datos if fila.get(columna) == valor]
+
 
 def imprimir_resultados(resultados):
-    try:
-        if resultados:
-            for resultado in resultados:
-                print({"run_id": resultado.get("run_id"), "total_attempts": resultado.get("total_attempts")})
-        else:
-            print("No se encontraron resultados")
-    except Exception as e:
-        print(f"Error printing results: {e}")
-        raise
+    if resultados:
+        for resultado in resultados:
+            print(
+                {
+                    "run_id": resultado.get("run_id"),
+                    "total_attempts": resultado.get("total_attempts"),
+                }
+            )
+    else:
+        print("No se encontraron resultados")
+
 
 def main():
-    try:
-        bucket = "devops-figue-practice"
-        key = "02_retry_classification.csv"
+    parser = argparse.ArgumentParser(
+        description="Busca un run_number en un CSV local."
+    )
+    parser.add_argument(
+        "--csv",
+        type=Path,
+        default=Path(__file__).with_name("02_retry_classification.csv"),
+        help="Ruta al CSV (por defecto: 02_retry_classification.csv junto al script).",
+    )
+    parser.add_argument("--run-number", default="12047", help="Run number a buscar.")
+    args = parser.parse_args()
 
-        csv_data = descargar_csv(bucket, key)
-        datos = extraer_columnas(csv_data)
-        resultados = buscar_datos(datos, "run_number", "12047")
-        imprimir_resultados(resultados)
-    except Exception as e:
-        print(f"Fatal error in main: {e}")
-        raise
+    datos = cargar_csv(args.csv)
+    resultados = buscar_datos(datos, "run_number", args.run_number)
+    imprimir_resultados(resultados)
+
 
 if __name__ == "__main__":
     main()
