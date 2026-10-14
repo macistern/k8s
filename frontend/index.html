@@ -1,40 +1,46 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DevOps E2E Tutorial</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Public+Sans:wght@400&display=swap"
-    rel="stylesheet"
+  <meta
+    name="description"
+    content="Matías Cisterna, DevOps Engineer especializado en infraestructura cloud y automatización."
   />
+  <meta name="theme-color" content="#101820" />
+  <title>Matías Cisterna — DevOps Engineer</title>
   <link rel="stylesheet" href="/src/style.css" />
 </head>
 <body>
-  <header class="page-header">
-    <h1 class="headline-xl">DevOps E2E Tutorial</h1>
-    <p class="body-lg">De un script en Python a un frontend servido por CloudFront.</p>
-  </header>
+  <main class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">
+        <span class="eyebrow__indicator" aria-hidden="true"></span>
+        Infrastructure deployed with Terraform
+      </p>
 
-  <main class="container">
-    <section class="panel" id="api-panel">
-      <h2 class="headline-md">Mensaje de la API</h2>
-      <p class="body-md" id="api-message">Consultando /api/ ...</p>
-    </section>
+      <h1>Matías<br /><span>Cisterna</span></h1>
+      <p class="role">DevOps Engineer <span aria-hidden="true">·</span> Cloud Infrastructure &amp; Automation</p>
 
-    <section class="panel" id="services-panel">
-      <h2 class="headline-md">Servicios usados en este proyecto</h2>
-      <ul class="service-list" id="service-list"></ul>
-    </section>
+      <p class="intro">
+        I build reliable infrastructure, automate operations, and bring a
+        database-administration mindset to cloud platforms and observability.
+      </p>
 
-    <section class="panel" id="runbook-panel">
-      <h2 class="headline-md">Comandos clave del runbook</h2>
-      <div id="runbook-commands"></div>
-    </section>
+      <nav class="social-links" aria-label="Professional profiles">
+        <a href="https://github.com/macistern" target="_blank" rel="noopener noreferrer">
+          GitHub <span aria-hidden="true">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/esteban-matias-cisterna/" target="_blank" rel="noopener noreferrer">
+          LinkedIn <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </div>
+
+    <footer class="site-footer">
+      <span class="site-footer__line" aria-hidden="true"></span>
+      <p>Built on AWS with Terraform, an Application Load Balancer, and Nginx.</p>
+    </footer>
   </main>
-
-  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

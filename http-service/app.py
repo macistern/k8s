@@ -16,7 +16,7 @@ def home_response():
     try:
         logger.info("GET / - Home page accessed")
         return jsonify({
-            'message': '¡Hola Natalia! Estas aprendiendo kubernetes!',
+            'message': 'API funcionando correctamente.',
             'status': 'success'
         }), 200
     except Exception as e:
@@ -61,7 +61,7 @@ def ready():
     return ready_response()
 
 
-@app.route('/api/', methods=['GET'])
+@app.route('/api/', methods=['GET'], strict_slashes=False)
 def api_home():
     return home_response()
 
@@ -91,7 +91,7 @@ def internal_error(error):
 if __name__ == '__main__':
     try:
         logger.info("Starting Flask server on port 5000...")
-        logger.info("Available endpoints: /, /health, /ready, /api/, /api/health, /api/ready")
+        logger.info("Available endpoints: /, /health, /ready, /api, /api/, /api/health, /api/ready")
         app.run(host='0.0.0.0', port=5001, debug=False)
     except Exception as e:
         logger.error(f"Failed to start Flask server: {str(e)}", exc_info=True)

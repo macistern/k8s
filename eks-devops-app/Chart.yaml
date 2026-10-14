@@ -1,6 +1,6 @@
 apiVersion: v2
 name: devops-app
-description: A batch job that reads CSV from S3
+description: Batch job that searches a local CSV
 type: application
 version: 0.1.0
 appVersion: "1.16.0"

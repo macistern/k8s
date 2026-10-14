@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: 516209541518.dkr.ecr.us-east-1.amazonaws.com/devops-web
+  repository: tute2781/http-service
   pullPolicy: IfNotPresent
   tag: "latest"
 
@@ -31,6 +31,8 @@ ingress:
   className: alb
   path: /api
   healthcheckPath: /api/health
+  groupName: devops-portfolio
+  groupOrder: "-100"
   annotations: {}
 
 resources:

@@ -4,4 +4,4 @@
 
 2. Open your browser and visit http://localhost:8080
 
-3. You should see the message: "¡Hola Natalia hermosa aprendiste kubernetes!"
+3. You should see a JSON response indicating that the API is working.

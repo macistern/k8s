@@ -20,7 +20,7 @@ def test_root_returns_success_message(client):
     assert response.status_code == 200
     body = response.get_json()
     assert body["status"] == "success"
-    assert "message" in body
+    assert body["message"] == "API funcionando correctamente."
 
 
 def test_health_returns_healthy(client):
@@ -36,8 +36,11 @@ def test_ready_returns_ready(client):
 
 
 def test_api_root_matches_root(client):
-    assert client.get("/api/").get_json() == client.get("/").get_json()
-    assert client.get("/api/").status_code == client.get("/").status_code
+    root_response = client.get("/")
+    for path in ("/api", "/api/"):
+        response = client.get(path)
+        assert response.status_code == root_response.status_code
+        assert response.get_json() == root_response.get_json()
 
 
 def test_api_health_matches_health(client):

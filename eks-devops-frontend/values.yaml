@@ -1,0 +1,29 @@
+replicaCount: 2
+
+image:
+  repository: tute2781/devops-frontend
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: false
+  className: alb
+  path: /
+  healthcheckPath: /health
+  groupName: devops-portfolio
+  groupOrder: "100"
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
